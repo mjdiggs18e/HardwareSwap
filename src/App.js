@@ -13,21 +13,23 @@ import PostingTrade from './Components/PostingTrade';
 import './App.css';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
+import { UserProvider } from './Context/UserContext';
 
-function App({ location }) {
-  console.log(location);
+function App() {
   return (
     <Router>
-      <Header />
-      <div className="wrapper">
-        <Switch>
-          <Route path="/" exact component={PostingBuy} />
-          <Route path="/sell" component={PostingSell} />
-          <Route path="/trade" component={PostingTrade} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/login" component={Login} />
-        </Switch>
-      </div>
+      <UserProvider>
+        <Header />
+        <div className='wrapper'>
+          <Switch>
+            <Route path='/' exact component={PostingBuy} />
+            <Route path='/sell' component={PostingSell} />
+            <Route path='/trade' component={PostingTrade} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/login' component={Login} />
+          </Switch>
+        </div>
+      </UserProvider>
     </Router>
   );
 }
