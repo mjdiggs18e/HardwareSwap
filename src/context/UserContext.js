@@ -19,6 +19,10 @@ function logout() {
   return auth.signOut();
 }
 
+function resetPassword(email) {
+  return auth.sendPasswordResetEmail(email);
+}
+
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState('');
   const [loading, setLoading] = useState(false);
@@ -37,6 +41,7 @@ export const UserProvider = ({ children }) => {
     signup,
     login,
     logout,
+    resetPassword,
   };
 
   return (

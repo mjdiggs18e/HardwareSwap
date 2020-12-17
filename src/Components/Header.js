@@ -18,7 +18,10 @@ const Header = () => {
         </Link>
         <ul>
           {currentUser ? (
-            <button onClick={handleLogout}>Log Out</button>
+            <>
+              <p>{currentUser.email}</p>
+              <button onClick={handleLogout}>Log Out</button>
+            </>
           ) : (
             <>
               <Link to='/signup'>

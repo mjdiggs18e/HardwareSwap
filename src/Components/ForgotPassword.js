@@ -1,20 +1,13 @@
 import React, { useState, useRef } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useAuth } from '../Context/UserContext';
 
-const Login = () => {
+const ForgotPassword = () => {
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const { login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const { resetPassword } = useAuth();
+  const [message, setMessage] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -22,10 +15,10 @@ const Login = () => {
     try {
       setError('');
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push('/');
+      await resetPassword(emailRef.current.value);
+      setMessage('Check your inbox for further instructions');
     } catch {
-      setError('Failed to log in');
+      setError('Failed to reset password');
     }
 
     setLoading(false);
@@ -34,26 +27,23 @@ const Login = () => {
   return (
     <div>
       <section>
-        <div className='login-body'>
-          <h1>Log In</h1>
+        <div className='password-body'>
+          <h1>Forgot Password</h1>
+          {message && <h1>{message}</h1>}
           {error && <h1>{error}</h1>}
           <form onSubmit={handleSubmit}>
             <label>
               Email
               <input type='text' ref={emailRef} required />
             </label>
-            <label>
-              Password
-              <input type='password' ref={passwordRef} required />
-            </label>
             <button disabled={loading} className='signup-button' type='submit'>
-              Log In
+              Forgot Password
             </button>
           </form>
         </div>
       </section>
-      <Link to='/forgot-password'>
-        <p>Forgot Password?</p>
+      <Link to='/login?'>
+        <p>Log In</p>
       </Link>
       <Link to='/signup?'>
         <p>New User? Create an account</p>
@@ -62,4 +52,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

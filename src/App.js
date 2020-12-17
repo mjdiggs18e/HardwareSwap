@@ -14,6 +14,8 @@ import './App.css';
 import SignUp from './Components/SignUp';
 import Login from './Components/Login';
 import { UserProvider } from './Context/UserContext';
+import PrivateRoute from './Components/PrivateRoute';
+import ForgotPassword from './Components/ForgotPassword';
 
 function App() {
   return (
@@ -25,8 +27,9 @@ function App() {
             <Route path='/' exact component={PostingBuy} />
             <Route path='/sell' component={PostingSell} />
             <Route path='/trade' component={PostingTrade} />
-            <Route path='/signup' component={SignUp} />
-            <Route path='/login' component={Login} />
+            <Route path='/forgot-password' component={ForgotPassword} />
+            <PrivateRoute path='/signup' component={SignUp} />
+            <PrivateRoute path='/login' component={Login} />
           </Switch>
         </div>
       </UserProvider>
