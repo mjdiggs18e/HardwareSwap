@@ -281,3 +281,38 @@ li {
 .fogotpassword-sucess {
   color: #00ff6e;
 }
+
+/* Post Component */
+.trade-post {
+  background-color: #1c1c24;
+  padding: 1.5rem;
+  margin: 0 0 40px 0;
+  position: relative;
+}
+
+.trade-type {
+  width: 10px;
+  height: 100%;
+  background-color: #078736;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.buy {
+  background-color: #078736;
+}
+
+.sell {
+  background-color: #2653a9;
+}
+
+.trade {
+  background-color: #a92626;
+}
+
+.postlist-holder {
+  margin: 25px 0 0 0;
+  width: 45vw;
+  height: 70vh;
+}

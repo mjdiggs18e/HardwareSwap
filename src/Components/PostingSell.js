@@ -16,13 +16,14 @@ const PostingSell = () => {
 
     db.collection('trades')
       .add({
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         type: 'sell',
         user: currentUser.email,
         location: location.current.value,
         title: title.current.value,
         text: text.current.value,
         select: select.current.value,
+        query: 'all-post',
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
         location.current.value = '';
