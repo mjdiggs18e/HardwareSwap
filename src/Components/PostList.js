@@ -1,6 +1,11 @@
 import React from 'react';
 import { db } from '../Firebase/firebase';
-import Posts from './Posts';
+
+db.collection('posts')
+  .get()
+  .then((snapshot) => {
+    console.log(snapshot.docs);
+  });
 
 const PostList = () => {
   return <h1>Post List</h1>;
