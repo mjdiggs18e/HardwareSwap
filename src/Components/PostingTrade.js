@@ -43,13 +43,15 @@ const PostingTrade = () => {
           </select>
         </label>
         {currentUser ? (
-          <button className="buying-submit" type="submit">
+          <button className="trading-submit" type="submit">
             Submit Post
           </button>
         ) : (
-          <button className="posting-signup" type="submit">
-            <Link to="/login">Login to post</Link>
-          </button>
+          <Link to="/login">
+            <button className="posting-signup" type="submit">
+              Login to post
+            </button>
+          </Link>
         )}
       </form>
     </section>
