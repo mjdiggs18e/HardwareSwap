@@ -1,11 +1,5 @@
 import React, { useState, useRef } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../Context/UserContext';
 
 const Login = () => {
@@ -34,28 +28,28 @@ const Login = () => {
   return (
     <div>
       <section>
-        <div className='login-body'>
+        <div className="login-body">
           <h1>Log In</h1>
           {error && <h1>{error}</h1>}
           <form onSubmit={handleSubmit}>
             <label>
               Email
-              <input type='text' ref={emailRef} required />
+              <input type="text" ref={emailRef} required />
             </label>
             <label>
               Password
-              <input type='password' ref={passwordRef} required />
+              <input type="password" ref={passwordRef} required />
             </label>
-            <button disabled={loading} className='signup-button' type='submit'>
+            <button disabled={loading} className="signup-button" type="submit">
               Log In
             </button>
           </form>
         </div>
       </section>
-      <Link to='/forgot-password'>
+      <Link to="/forgot-password">
         <p>Forgot Password?</p>
       </Link>
-      <Link to='/signup?'>
+      <Link to="/signup?">
         <p>New User? Create an account</p>
       </Link>
     </div>

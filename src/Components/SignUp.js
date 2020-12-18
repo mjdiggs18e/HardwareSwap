@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../Context/UserContext';
 
 const SignUp = () => {
@@ -31,29 +31,29 @@ const SignUp = () => {
   return (
     <div>
       <section>
-        <div className='login-body'>
+        <div className="login-body">
           <h1>Sign Up</h1>
           {error && <h1>{error}</h1>}
           <form onSubmit={handleSubmit}>
             <label>
               Email
-              <input type='text' ref={emailRef} required />
+              <input type="text" ref={emailRef} required />
             </label>
             <label>
               Password
-              <input type='password' ref={passwordRef} required />
+              <input type="password" ref={passwordRef} required />
             </label>
             <label>
               Password Confirmation
-              <input type='password' ref={passwordConfirmationRef} required />
+              <input type="password" ref={passwordConfirmationRef} required />
             </label>
-            <button disabled={loading} className='signup-button' type='submit'>
+            <button disabled={loading} className="signup-button" type="submit">
               Sign Up
             </button>
           </form>
         </div>
       </section>
-      <Link to='/login?'>
+      <Link to="/login?">
         <p>Already have an account? Log In</p>
       </Link>
     </div>
