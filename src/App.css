@@ -188,8 +188,85 @@ li {
   justify-content: space-between;
 }
 
+.posting-signup {
+  width: 25%;
+  height: 50px;
+  margin: 0 auto;
+  outline: 0;
+  font-weight: 500;
+  font-size: 16px;
+  border: 0;
+  cursor: pointer;
+  background-color: #13131a;
+}
+
 /* Sign Up and Log In Component */
 
-input {
-  color: #fff;
+.signup-section h1,
+.login-section h1,
+.forgotpassword-section h1 {
+  font-size: 36px;
+  margin: 20px 20px;
+}
+
+.signup-section p,
+.login-section p,
+.forgotpassword-section p {
+  margin: 20px 20px;
+}
+
+.signup-section,
+.login-section,
+.forgotpassword-section {
+  text-align: center;
+}
+
+.signup-form,
+.login-form,
+.forgotpassword-form {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.signup-form input,
+.login-form input,
+.forgotpassword-form input {
+  height: 50px;
+  width: 25vw;
+  background-color: #3c3c48;
+  border: 0;
+  outline: 0;
+  margin: 20px auto;
+  padding: 1rem;
+}
+
+.signup-form label,
+.login-form label,
+.forgotpassword-form label {
+  display: contents;
+}
+
+.signup-form button,
+.login-form button,
+.forgotpassword-form button {
+  width: 10vw;
+  background-color: #1c1c24;
+  height: 50px;
+  margin: 0 auto;
+  outline: 0;
+  font-weight: 500;
+  font-size: 16px;
+  border: 0;
+  cursor: pointer;
+}
+
+.signup-error {
+  color: #ff0800;
+}
+
+.fogotpassword-sucess {
+  color: #00ff6e;
 }

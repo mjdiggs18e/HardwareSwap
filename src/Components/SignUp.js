@@ -29,34 +29,30 @@ const SignUp = () => {
   }
 
   return (
-    <div>
-      <section>
-        <div className="login-body">
-          <h1>Sign Up</h1>
-          {error && <h1>{error}</h1>}
-          <form onSubmit={handleSubmit}>
-            <label>
-              Email
-              <input type="text" ref={emailRef} required />
-            </label>
-            <label>
-              Password
-              <input type="password" ref={passwordRef} required />
-            </label>
-            <label>
-              Password Confirmation
-              <input type="password" ref={passwordConfirmationRef} required />
-            </label>
-            <button disabled={loading} className="signup-button" type="submit">
-              Sign Up
-            </button>
-          </form>
-        </div>
-      </section>
+    <section className="signup-section">
+      <h1>Sign Up</h1>
+      {error && <p className="signup-error">{error}</p>}
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <label>
+          Email
+          <input type="text" ref={emailRef} required />
+        </label>
+        <label>
+          Password
+          <input type="password" ref={passwordRef} minLength="6" required />
+        </label>
+        <label>
+          Password Confirmation
+          <input type="password" ref={passwordConfirmationRef} required />
+        </label>
+        <button disabled={loading} className="signup-button" type="submit">
+          Sign Up
+        </button>
+      </form>
       <Link to="/login?">
         <p>Already have an account? Log In</p>
       </Link>
-    </div>
+    </section>
   );
 };
 

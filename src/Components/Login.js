@@ -26,33 +26,29 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <section>
-        <div className="login-body">
-          <h1>Log In</h1>
-          {error && <h1>{error}</h1>}
-          <form onSubmit={handleSubmit}>
-            <label>
-              Email
-              <input type="text" ref={emailRef} required />
-            </label>
-            <label>
-              Password
-              <input type="password" ref={passwordRef} required />
-            </label>
-            <button disabled={loading} className="signup-button" type="submit">
-              Log In
-            </button>
-          </form>
-        </div>
-      </section>
+    <section className="login-section">
+      <h1>Log In</h1>
+      {error && <p className="login-error">{error}</p>}
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label>
+          Email
+          <input type="text" ref={emailRef} required />
+        </label>
+        <label>
+          Password
+          <input type="password" ref={passwordRef} required />
+        </label>
+        <button disabled={loading} className="login-button" type="submit">
+          Log In
+        </button>
+      </form>
       <Link to="/forgot-password">
         <p>Forgot Password?</p>
       </Link>
       <Link to="/signup?">
         <p>New User? Create an account</p>
       </Link>
-    </div>
+    </section>
   );
 };
 
