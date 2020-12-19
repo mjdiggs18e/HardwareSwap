@@ -5,12 +5,12 @@ const Posts = ({ title, createdAt, location, type, select, user }) => {
   const tradeTypeSell = 'sell';
 
   return (
-    <div className="trade-post">
+    <div className='trade-post'>
       <div
         className={
-          type == tradeTypeBuy
+          type === tradeTypeBuy
             ? 'trade-type buy'
-            : type == tradeTypeSell
+            : type === tradeTypeSell
             ? 'trade-type sell'
             : 'trade-type trade'
         }
