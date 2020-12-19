@@ -28,9 +28,9 @@ const PostList = () => {
     <section className="postlist-holder">
       {posts.map((post) => {
         return (
-          <Link to={`/trades/${post[1]}`}>
+          <Link to={`/trade/${post[1]}`}>
             <Posts
-              key={post[0].title}
+              key={post[1]}
               location={post[0].location}
               title={post[0].title}
               user={post[0].user}

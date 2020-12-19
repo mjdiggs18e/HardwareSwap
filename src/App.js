@@ -2,7 +2,6 @@ import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Header from './Components/Header';
 import PostingBuy from './Components/PostingBuy';
-import Posts from './Components/Posts';
 import PostingSell from './Components/PostingSell';
 import PostingTrade from './Components/PostingTrade';
 import './App.css';
@@ -12,6 +11,7 @@ import { UserProvider } from './Context/UserContext';
 import PrivateRoute from './Components/PrivateRoute';
 import ForgotPassword from './Components/ForgotPassword';
 import PostList from './Components/PostList';
+import PostInfo from './Components/PostInfo';
 
 function App() {
   return (
@@ -32,11 +32,14 @@ function App() {
                 <PostingSell />
               </div>
             </Route>
-            <Route path="/trade">
+            <Route path="/trade" exact>
               <div className="flex-homepage">
                 <PostList />
                 <PostingTrade />
               </div>
+            </Route>
+            <Route path="/trade/:id">
+              <PostInfo />
             </Route>
             <Route path="/forgot-password" component={ForgotPassword} />
             <PrivateRoute path="/signup" component={SignUp} />

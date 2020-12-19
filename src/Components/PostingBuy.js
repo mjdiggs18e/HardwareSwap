@@ -27,7 +27,6 @@ const PostingBuy = () => {
         title: title.current.value,
         text: text.current.value,
         select: select.current.value,
-        query: 'all-post',
         createdAt: dayjs().unix(),
       })
       .then(() => {

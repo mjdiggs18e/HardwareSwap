@@ -145,7 +145,7 @@ li {
 }
 
 .posting-form textarea {
-  height: 70px;
+  height: 150px;
   resize: none;
   margin: 20px 0;
   background-color: #3c3c48;
