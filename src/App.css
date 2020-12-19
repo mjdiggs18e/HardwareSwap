@@ -316,7 +316,7 @@ li {
   height: 70vh;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 425px) {
   nav h1 {
     font-size: 16px;
   }
@@ -337,6 +337,7 @@ li {
   .posting-body {
     width: 90vw;
     margin-top: 10px;
+    height: unset;
   }
 
   .posting-title {
@@ -382,7 +383,8 @@ li {
   .posting-form button {
     width: 50%;
     margin: 10px auto;
-    height: 30px;
+    height: 40px;
+    font-size: 12px;
   }
   .signup-section h1,
   .login-section h1,
