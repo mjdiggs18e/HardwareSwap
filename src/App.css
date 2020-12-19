@@ -330,6 +330,36 @@ li {
   margin: 15px 0 0 0;
 }
 
+@media only screen and (min-width: 2436px) {
+  .posting-body {
+    width: 25vw;
+  }
+
+  .postlist-holder {
+    width: 30vw;
+  }
+}
+
+@media only screen and (min-width: 2001px) and (max-width: 2435px) {
+  .posting-body {
+    width: 28vw;
+  }
+
+  .postlist-holder {
+    width: 35vw;
+  }
+}
+
+@media only screen and (min-width: 1921px) and (max-width: 2000px) {
+  .posting-body {
+    width: 30vw;
+  }
+
+  .postlist-holder {
+    width: 45vw;
+  }
+}
+
 @media only screen and (max-width: 1689px) {
   .posting-body {
     width: 40vw;
