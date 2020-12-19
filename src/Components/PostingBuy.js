@@ -4,6 +4,8 @@ import 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Context/UserContext';
 import { db } from '../Firebase/firebase';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
 const PostingBuy = () => {
   const location = useRef();
@@ -15,6 +17,7 @@ const PostingBuy = () => {
 
   const addBuyPost = (e) => {
     e.preventDefault();
+    dayjs.extend(relativeTime);
 
     db.collection('trades')
       .add({
@@ -25,7 +28,7 @@ const PostingBuy = () => {
         text: text.current.value,
         select: select.current.value,
         query: 'all-post',
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        createdAt: dayjs().unix(),
       })
       .then(() => {
         location.current.value = '';
@@ -38,26 +41,26 @@ const PostingBuy = () => {
   };
 
   return (
-    <section className="posting-body">
-      <h1 className="posting-title">Create a posting</h1>
-      <div className="posting-type">
-        <Link to="/">
-          <button className="posting-buy active type">Buy</button>
+    <section className='posting-body'>
+      <h1 className='posting-title'>Create a posting</h1>
+      <div className='posting-type'>
+        <Link to='/'>
+          <button className='posting-buy active type'>Buy</button>
         </Link>
-        <Link to="/sell">
-          <button className="posting-sell type">Sell</button>
+        <Link to='/sell'>
+          <button className='posting-sell type'>Sell</button>
         </Link>
-        <Link to="/trade">
-          <button className="posting-trade type">Trade</button>
+        <Link to='/trade'>
+          <button className='posting-trade type'>Trade</button>
         </Link>
       </div>
-      <form className="posting-form" onSubmit={addBuyPost}>
+      <form className='posting-form' onSubmit={addBuyPost}>
         <label>
           Location (Abbr)
           <input
-            type="text"
-            placeholder="VA"
-            maxLength="2"
+            type='text'
+            placeholder='VA'
+            maxLength='2'
             ref={location}
             required
           />
@@ -65,30 +68,30 @@ const PostingBuy = () => {
         <label>
           Title
           <input
-            type="text"
-            placeholder="[H] Paypal [W] Playstation 5"
+            type='text'
+            placeholder='[H] Paypal [W] Playstation 5'
             ref={title}
             required
           />
         </label>
         <label>
           Text
-          <textarea type="text" ref={text} required />
+          <textarea type='text' ref={text} required />
         </label>
         <label>
           Shipped or local meetup
           <select ref={select}>
-            <option value="shipped">Shipped</option>
-            <option value="meetup">Meetup</option>
+            <option value='Shipped'>Shipped</option>
+            <option value='Meetup'>Meetup</option>
           </select>
         </label>
         {currentUser ? (
-          <button className="buying-submit" type="submit">
+          <button className='buying-submit' type='submit'>
             Submit Post
           </button>
         ) : (
-          <Link to="/login">
-            <button className="posting-signup" type="submit">
+          <Link to='/login'>
+            <button className='posting-signup' type='submit'>
               Login to post
             </button>
           </Link>

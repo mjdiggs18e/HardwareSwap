@@ -312,7 +312,21 @@ li {
 
 .postlist-holder {
   margin: 25px 0 0 0;
-  width: 45vw;
+  width: 50vw;
+}
+
+.post-title span {
+  margin-right: 5px;
+}
+
+.post-title,
+.post-title span {
+  font-weight: 500;
+}
+
+.post-bottom-info {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 425px) {
@@ -320,6 +334,14 @@ li {
     width: 90vw;
   }
 
+  .post-location,
+  .post-title {
+    font-size: 12px;
+  }
+
+  .post-bottom-info {
+    font-size: 10px;
+  }
   .posting-body {
     height: unset;
     padding: 20px 20px;
@@ -352,8 +374,8 @@ li {
     font-size: 20px;
   }
   .type {
-    width: 50px;
-    height: 25px;
+    width: 55px;
+    height: 35px;
     font-size: 12px;
   }
   .posting-type {
@@ -375,7 +397,13 @@ li {
   .posting-form input {
     height: 35px;
     margin: 10px 0;
+    font-size: 12px;
   }
+
+  textarea {
+    font-size: 12px;
+  }
+
   .posting-form textarea,
   .posting-form select {
     margin: 10px 0;
@@ -390,7 +418,7 @@ li {
   .posting-form button {
     width: 50%;
     margin: 10px auto;
-    height: 30px;
+    height: 40px;
   }
   .signup-section h1,
   .login-section h1,

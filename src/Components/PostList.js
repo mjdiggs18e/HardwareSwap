@@ -24,16 +24,17 @@ const PostList = () => {
   }, []);
 
   return (
-    <section className="postlist-holder">
+    <section className='postlist-holder'>
       {posts.map((post) => {
-        console.log(post.createdAt);
         return (
           <Posts
+            key={post.title}
             location={post.location}
             title={post.title}
             user={post.user}
             type={post.type}
             select={post.select}
+            time={post.createdAt}
           />
         );
       })}
