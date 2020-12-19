@@ -40,6 +40,10 @@ ul {
   list-style-type: none;
 }
 
+select {
+  -webkit-appearance: none;
+}
+
 /* Header Component */
 
 .logout {
