@@ -330,6 +330,36 @@ li {
   margin: 15px 0 0 0;
 }
 
+/* Post Info Component */
+
+.postinfo-holder {
+  width: 65vw;
+  background-color: #1c1c24;
+  padding: 4rem;
+}
+
+.postinfo-holder span {
+  margin-right: 5px;
+}
+
+.postinfo-title {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.postinfo-body {
+  margin: 20px 0;
+  line-height: 30px;
+}
+
+.postinfo-select {
+  padding: 0.25rem;
+  width: 5vw;
+  background: #078736;
+  text-align: center;
+  margin: 10px 0;
+}
+
 @media only screen and (min-width: 2436px) {
   .posting-body {
     width: 25vw;

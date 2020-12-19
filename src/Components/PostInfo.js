@@ -27,13 +27,19 @@ const PostInfo = () => {
     const currentTime = dayjs();
     const timeSincePost = postCreatedAt.from(currentTime);
     return (
-      <section>
-        <p>[USA-{post.location}]</p>
-        <p>{post.title}</p>
-        <p>{timeSincePost}</p>
-        <p>{post.user}</p>
-        <p>{post.text}</p>
-        <p>{post.select}</p>
+      <section className="postinfo-holder">
+        <p className="postinfo-title">
+          <span>[USA-{post.location}]</span>
+          {post.title}
+        </p>
+        <p className="postinfo-select">{post.select}</p>
+
+        <p>
+          Submitted {timeSincePost} by <span>{post.user}</span>
+        </p>
+        <div className="postinfo-body">
+          <p>{post.text}</p>
+        </div>
       </section>
     );
   });
