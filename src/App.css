@@ -157,7 +157,7 @@ li {
 }
 
 .posting-form select {
-  width: 25%;
+  width: 100px;
   height: 35px;
   margin: 20px 0;
   background-color: #3c3c48;
@@ -167,7 +167,7 @@ li {
 }
 
 .posting-form button {
-  width: 75%;
+  width: 250px;
   height: 50px;
   margin: 0 auto;
   outline: 0;
@@ -199,7 +199,7 @@ li {
 }
 
 .posting-signup {
-  width: 25%;
+  width: 50px;
   height: 50px;
   margin: 0 auto;
   outline: 0;
@@ -313,7 +313,6 @@ li {
 .postlist-holder {
   margin: 25px 0 0 0;
   width: 45vw;
-  height: 70vh;
 }
 
 @media only screen and (max-width: 425px) {
