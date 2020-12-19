@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import Posts from './Posts';
+import { Link } from 'react-router-dom';
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
@@ -13,7 +14,7 @@ const PostList = () => {
     postsCollection.onSnapshot((querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
-        items.push(doc.data());
+        items.push([doc.data(), doc.id]);
       });
       setPosts(items);
     });
@@ -24,18 +25,20 @@ const PostList = () => {
   }, []);
 
   return (
-    <section className='postlist-holder'>
+    <section className="postlist-holder">
       {posts.map((post) => {
         return (
-          <Posts
-            key={post.title}
-            location={post.location}
-            title={post.title}
-            user={post.user}
-            type={post.type}
-            select={post.select}
-            time={post.createdAt}
-          />
+          <Link to={`/trades/${post[1]}`}>
+            <Posts
+              key={post[0].title}
+              location={post[0].location}
+              title={post[0].title}
+              user={post[0].user}
+              type={post[0].type}
+              select={post[0].select}
+              time={post[0].createdAt}
+            />
+          </Link>
         );
       })}
     </section>

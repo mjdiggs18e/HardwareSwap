@@ -2,7 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-const Posts = ({ title, time, location, type, select, user }) => {
+const Posts = ({ title, time, location, type, id, user }) => {
   dayjs.extend(relativeTime);
 
   const postCreatedAt = dayjs.unix(time);
@@ -13,7 +13,7 @@ const Posts = ({ title, time, location, type, select, user }) => {
   const tradeTypeSell = 'sell';
 
   return (
-    <div className='trade-post'>
+    <div className="trade-post">
       <div
         className={
           type === tradeTypeBuy
@@ -23,12 +23,11 @@ const Posts = ({ title, time, location, type, select, user }) => {
             : 'trade-type trade'
         }
       ></div>
-      <p className='post-title'>
+      <p className="post-title">
         <span>[USA-{location}]</span>
         {title}
       </p>
-
-      <div class='post-bottom-info'>
+      <div class="post-bottom-info">
         <p>Submitted by {user}</p>
         <p>{timeSincePost}</p>
       </div>

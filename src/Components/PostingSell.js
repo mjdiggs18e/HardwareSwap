@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import firebase from 'firebase/app';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Context/UserContext';
 import { db } from '../Firebase/firebase';
@@ -41,27 +40,27 @@ const PostingSell = () => {
   };
 
   return (
-    <section className='posting-body'>
+    <section className="posting-body">
       <Toaster />
-      <h1 className='posting-title'>Create a posting</h1>
-      <div className='posting-type'>
-        <Link to='/'>
-          <button className='posting-buy type'>Buy</button>
+      <h1 className="posting-title">Create a posting</h1>
+      <div className="posting-type">
+        <Link to="/">
+          <button className="posting-buy type">Buy</button>
         </Link>
-        <Link to='/sell'>
-          <button className='posting-sell active type'>Sell</button>
+        <Link to="/sell">
+          <button className="posting-sell active type">Sell</button>
         </Link>
-        <Link to='/trade'>
-          <button className='posting-trade type'>Trade</button>
+        <Link to="/trade">
+          <button className="posting-trade type">Trade</button>
         </Link>
       </div>
-      <form className='posting-form' onSubmit={addSellPost}>
+      <form className="posting-form" onSubmit={addSellPost}>
         <label>
           Location (Abbr)
           <input
-            type='text'
-            placeholder='VA'
-            maxLength='2'
+            type="text"
+            placeholder="VA"
+            maxLength="2"
             ref={location}
             required
           />
@@ -69,30 +68,30 @@ const PostingSell = () => {
         <label>
           Title
           <input
-            type='text'
-            placeholder='[H] Playstation 5 [W] Paypal'
+            type="text"
+            placeholder="[H] Playstation 5 [W] Paypal"
             ref={title}
             required
           />
         </label>
         <label>
           Text
-          <textarea type='text' ref={text} required />
+          <textarea type="text" ref={text} required />
         </label>
         <label>
           Shipped or local meetup
           <select ref={select}>
-            <option value='Shipped'>Shipped</option>
-            <option value='Meetup'>Meetup</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Meetup">Meetup</option>
           </select>
         </label>
         {currentUser ? (
-          <button className='selling-submit' type='submit'>
+          <button className="selling-submit" type="submit">
             Submit Post
           </button>
         ) : (
-          <Link to='/login'>
-            <button className='posting-signup' type='submit'>
+          <Link to="/login">
+            <button className="posting-signup" type="submit">
               Login to post
             </button>
           </Link>
