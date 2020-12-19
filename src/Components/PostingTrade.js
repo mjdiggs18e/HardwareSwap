@@ -6,6 +6,7 @@ import { useAuth } from '../Context/UserContext';
 import { db } from '../Firebase/firebase';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import toast, { Toaster } from 'react-hot-toast';
 
 const PostingTrade = () => {
   const location = useRef();
@@ -30,17 +31,20 @@ const PostingTrade = () => {
         createdAt: dayjs().unix(),
       })
       .then(() => {
+        toast('Successfully added post!');
         location.current.value = '';
         title.current.value = '';
         text.current.value = '';
       })
       .catch(() => {
+        toast('Failed to add post.');
         console.error('Error adding document');
       });
   };
 
   return (
     <section className='posting-body'>
+      <Toaster />
       <h1 className='posting-title'>Create a posting</h1>
       <div className='posting-type'>
         <Link to='/'>
