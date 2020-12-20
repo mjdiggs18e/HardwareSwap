@@ -6,6 +6,8 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const PostInfo = () => {
   const [postInformation, setPostInformation] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const { id } = useParams();
   const postsCollection = firebase.firestore().collection('trades').doc(id);
 
@@ -14,6 +16,7 @@ const PostInfo = () => {
       const item = [];
       item.push(doc.data());
       setPostInformation(item);
+      setLoading(false);
     });
   };
 
@@ -26,7 +29,9 @@ const PostInfo = () => {
     const postCreatedAt = dayjs.unix(post.createdAt);
     const currentTime = dayjs();
     const timeSincePost = postCreatedAt.from(currentTime);
-    return (
+    return loading ? (
+      <span class="loader"></span>
+    ) : (
       <section className="postinfo-holder">
         <p className="postinfo-title">
           <span>[USA-{post.location}]</span>

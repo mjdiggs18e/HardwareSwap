@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const postsCollection = firebase
     .firestore()
     .collection('trades')
@@ -17,6 +18,7 @@ const PostList = () => {
         items.push([doc.data(), doc.id]);
       });
       setPosts(items);
+      setLoading(false);
     });
   };
 
@@ -24,7 +26,11 @@ const PostList = () => {
     getPosts();
   }, []);
 
-  return (
+  return loading ? (
+    <section className="postlist-holder">
+      <span class="loader"></span>
+    </section>
+  ) : (
     <section className="postlist-holder">
       {posts.map((post) => {
         return (
