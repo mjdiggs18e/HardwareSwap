@@ -30,19 +30,18 @@ const PostInfo = () => {
     const currentTime = dayjs();
     const timeSincePost = postCreatedAt.from(currentTime);
     return loading ? (
-      <span class="loader"></span>
+      <span class='loader'></span>
     ) : (
-      <section className="postinfo-holder">
-        <p className="postinfo-title">
+      <section className='postinfo-holder'>
+        <p className='postinfo-title'>
           <span>[USA-{post.location}]</span>
           {post.title}
         </p>
-        <p className="postinfo-select">{post.select}</p>
-
+        <p className='postinfo-select'>{post.select}</p>
         <p>
           Submitted {timeSincePost} by <span>{post.user}</span>
         </p>
-        <div className="postinfo-body">
+        <div className='postinfo-body'>
           <p>{post.text}</p>
         </div>
       </section>
