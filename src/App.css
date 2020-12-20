@@ -335,7 +335,7 @@ li {
 .postinfo-holder {
   width: 65vw;
   background-color: #1c1c24;
-  padding: 4rem;
+  padding: 4rem 4rem 2rem 4rem;
 }
 
 .postinfo-holder span {
@@ -348,7 +348,7 @@ li {
 }
 
 .postinfo-body {
-  margin: 20px 0;
+  margin: 20px 0 10px 0;
   line-height: 30px;
 }
 
