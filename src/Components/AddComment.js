@@ -1,21 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react';
-import dayjs from 'dayjs';
+import React, { useRef, useState, useEffect } from 'react';
 import firebase from 'firebase/app';
+import dayjs from 'dayjs';
 import { db } from '../Firebase/firebase';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../Context/UserContext';
 
-const Comment = () => {
-  const [comment, setComment] = useState([]);
+const AddComment = () => {
+  const [length, setLength] = useState([]);
   const { id } = useParams();
   const { currentUser } = useAuth();
-
   const message = useRef();
 
   const messageCollection = firebase
     .firestore()
     .collection('messages')
+    .where('postID', '==', id)
     .orderBy('createdAt', 'desc');
+
+  const getCommentLength = () => {
+    messageCollection.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setLength(items);
+    });
+  };
+
+  useEffect(() => {
+    getCommentLength();
+  }, []);
 
   const addMessages = (e) => {
     e.preventDefault();
@@ -30,15 +44,16 @@ const Comment = () => {
   };
 
   return (
-    <section className='message-section'>
-      <form className='message-form' onSubmit={addMessages}>
+    <section className="message-section">
+      <h4 className="message-comment-length">{length.length} Comments</h4>
+      <form className="message-form" onSubmit={addMessages}>
         <textarea
-          className='message-input'
-          type='text'
+          className="message-input"
+          type="text"
           ref={message}
           required
         />
-        <button className='message-submit' type='submit'>
+        <button className="message-submit" type="submit">
           Save
         </button>
       </form>
@@ -46,4 +61,4 @@ const Comment = () => {
   );
 };
 
-export default Comment;
+export default AddComment;
