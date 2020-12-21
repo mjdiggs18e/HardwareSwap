@@ -43,6 +43,7 @@ const PostList = () => {
               type={post[0].type}
               select={post[0].select}
               time={post[0].createdAt}
+              id={post[1]}
             />
           </Link>
         );

@@ -1,6 +1,8 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { db } from '../Firebase/firebase';
+import { useAuth } from '../Context/UserContext';
 
 const Posts = ({ title, time, location, type, id, user }) => {
   dayjs.extend(relativeTime);
@@ -11,6 +13,22 @@ const Posts = ({ title, time, location, type, id, user }) => {
 
   const tradeTypeBuy = 'buy';
   const tradeTypeSell = 'sell';
+
+  const removePost = (e) => {
+    e.preventDefault();
+    console.log(id);
+    db.collection('trades')
+      .doc(id)
+      .delete()
+      .then(function () {
+        console.log('Document successfully deleted!');
+      })
+      .catch(function (error) {
+        console.error('Error removing document: ', error);
+      });
+  };
+
+  const { currentUser } = useAuth();
 
   return (
     <div className="trade-post">
@@ -31,6 +49,13 @@ const Posts = ({ title, time, location, type, id, user }) => {
         <p>Submitted by {user}</p>
         <p>{timeSincePost}</p>
       </div>
+      {currentUser && currentUser.email == user ? (
+        <button className="delete-post" onClick={removePost}>
+          Delete Post
+        </button>
+      ) : (
+        ''
+      )}
     </div>
   );
 };
