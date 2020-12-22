@@ -6,39 +6,32 @@ import { Link } from 'react-router-dom';
 const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const postsCollection = firebase
-    .firestore()
-    .collection('trades')
-    .orderBy('createdAt', 'desc');
-
-  const getPosts = () => {
-    postsCollection.onSnapshot((querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push([doc.data(), doc.id]);
-      });
-      setPosts(items);
-      setLoading(false);
-    });
-  };
 
   useEffect(() => {
-    let unmounted = false;
+    const unsubscribe = firebase
+      .firestore()
+      .collection('trades')
+      .orderBy('createdAt', 'desc')
+      .onSnapshot((querySnapshot) => {
+        const items = [];
+        querySnapshot.forEach((doc) => {
+          items.push([doc.data(), doc.id]);
+        });
+        setPosts(items);
+        setLoading(false);
+      });
 
-    if (!unmounted) {
-      getPosts();
-    }
     return () => {
-      unmounted = true;
+      unsubscribe();
     };
   }, []);
 
   return loading ? (
-    <section className="postlist-holder">
-      <span className="loader"></span>
+    <section className='postlist-holder'>
+      <span className='loader'></span>
     </section>
   ) : (
-    <section className="postlist-holder">
+    <section className='postlist-holder'>
       {posts.map((post) => {
         return (
           <Link to={`/trade/${post[1]}`} key={post[1]}>

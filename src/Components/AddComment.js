@@ -11,30 +11,22 @@ const AddComment = () => {
   const { currentUser } = useAuth();
   const message = useRef();
 
-  const messageCollection = firebase
-    .firestore()
-    .collection('messages')
-    .where('postID', '==', id)
-    .orderBy('createdAt', 'desc');
-
-  const getCommentLength = () => {
-    messageCollection.onSnapshot((querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setLength(items);
-    });
-  };
-
   useEffect(() => {
-    let unmounted = false;
+    const unsubscibe = firebase
+      .firestore()
+      .collection('messages')
+      .where('postID', '==', id)
+      .orderBy('createdAt', 'desc')
+      .onSnapshot((querySnapshot) => {
+        const items = [];
+        querySnapshot.forEach((doc) => {
+          items.push(doc.data());
+        });
+        setLength(items);
+      });
 
-    if (!unmounted) {
-      getCommentLength();
-    }
     return () => {
-      unmounted = true;
+      unsubscibe();
     };
   }, []);
 
@@ -51,16 +43,16 @@ const AddComment = () => {
   };
 
   return (
-    <section className="message-section">
-      <h4 className="message-comment-length">{length.length} Comments</h4>
-      <form className="message-form" onSubmit={addMessages}>
+    <section className='message-section'>
+      <h4 className='message-comment-length'>{length.length} Comments</h4>
+      <form className='message-form' onSubmit={addMessages}>
         <textarea
-          className="message-input"
-          type="text"
+          className='message-input'
+          type='text'
           ref={message}
           required
         />
-        <button className="message-submit" type="submit">
+        <button className='message-submit' type='submit'>
           Save
         </button>
       </form>
