@@ -505,6 +505,26 @@ li {
   .comment-post {
     width: 70vw;
   }
+
+  .posting-form textarea {
+    height: 100px;
+  }
+
+  .posting-form {
+    font-size: 16px;
+  }
+
+  .posting-form input {
+    height: 40px;
+  }
+
+  .posting-title {
+    padding-top: 10px;
+  }
+
+  .type {
+    height: 40px;
+  }
 }
 
 @media only screen and (max-width: 915px) {
