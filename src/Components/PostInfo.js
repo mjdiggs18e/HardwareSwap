@@ -42,7 +42,7 @@ const PostInfo = () => {
               {post.title}
             </p>
             <p className='postinfo-select'>{post.select}</p>
-            <p>
+            <p className='postinfo-submittedby'>
               Submitted {timeSincePost} by <span>{post.user}</span>
             </p>
             <div className='postinfo-body'>

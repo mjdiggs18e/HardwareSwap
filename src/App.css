@@ -494,6 +494,17 @@ li {
   .type {
     width: 75px;
   }
+  .postinfo-holder {
+    width: 90vw;
+  }
+
+  .postinfo-select {
+    width: 200px;
+  }
+
+  .comment-post {
+    width: 70vw;
+  }
 }
 
 @media only screen and (max-width: 915px) {
@@ -612,5 +623,35 @@ li {
     width: 50px;
     font-size: 12px;
     height: 35px;
+  }
+
+  .postinfo-holder {
+    width: 90vw;
+  }
+
+  .postinfo-title {
+    font-size: 16px;
+  }
+
+  .postinfo-select {
+    width: 150px;
+    padding: 0.1rem;
+  }
+
+  .postinfo-submittedby {
+    font-size: 14px;
+    margin: 25px 0;
+  }
+  .postinfo-body p {
+    font-size: 14px;
+    line-height: 25px;
+    margin: 5px 0;
+  }
+
+  .comment-post {
+    width: 90vw;
+  }
+  .comment-top {
+    display: unset;
   }
 }
