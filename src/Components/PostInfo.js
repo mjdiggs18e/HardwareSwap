@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import AddComment from './AddComment';
 import CommentList from './CommentList';
+import ReactMarkdown from 'react-markdown';
 
 const PostInfo = () => {
   const [postInformation, setPostInformation] = useState([]);
@@ -27,7 +28,7 @@ const PostInfo = () => {
   }, []);
 
   return loading ? (
-    <span className='loader' key='spinner'></span>
+    <span className="loader" key="spinner"></span>
   ) : (
     postInformation.map((post) => {
       dayjs.extend(relativeTime);
@@ -36,17 +37,17 @@ const PostInfo = () => {
       const timeSincePost = postCreatedAt.from(currentTime);
       return (
         <section key={post.title}>
-          <div className='postinfo-holder'>
-            <p className='postinfo-title'>
+          <div className="postinfo-holder">
+            <p className="postinfo-title">
               <span>[USA-{post.location}]</span>
               {post.title}
             </p>
-            <p className='postinfo-select'>{post.select}</p>
-            <p className='postinfo-submittedby'>
+            <p className="postinfo-select">{post.select}</p>
+            <p className="postinfo-submittedby">
               Submitted {timeSincePost} by <span>{post.user}</span>
             </p>
-            <div className='postinfo-body'>
-              <p>{post.text}</p>
+            <div className="postinfo-body">
+              <ReactMarkdown source={post.text}></ReactMarkdown>
             </div>
           </div>
           <AddComment />
