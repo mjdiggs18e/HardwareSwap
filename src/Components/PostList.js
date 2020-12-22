@@ -23,20 +23,26 @@ const PostList = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    let unmounted = false;
+
+    if (!unmounted) {
+      getPosts();
+    }
+    return () => {
+      unmounted = true;
+    };
   }, []);
 
   return loading ? (
     <section className="postlist-holder">
-      <span class="loader"></span>
+      <span className="loader"></span>
     </section>
   ) : (
     <section className="postlist-holder">
       {posts.map((post) => {
         return (
-          <Link to={`/trade/${post[1]}`}>
+          <Link to={`/trade/${post[1]}`} key={post[1]}>
             <Posts
-              key={post[1]}
               location={post[0].location}
               title={post[0].title}
               user={post[0].user}

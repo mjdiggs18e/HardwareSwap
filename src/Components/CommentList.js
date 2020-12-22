@@ -23,7 +23,14 @@ const CommentList = () => {
   };
 
   useEffect(() => {
-    retrieveComments();
+    let unmounted = false;
+
+    if (!unmounted) {
+      retrieveComments();
+    }
+    return () => {
+      unmounted = true;
+    };
   }, []);
 
   return post.map((comment, index) => {

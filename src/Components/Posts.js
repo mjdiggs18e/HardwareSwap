@@ -16,15 +16,14 @@ const Posts = ({ title, time, location, type, id, user }) => {
 
   const removePost = (e) => {
     e.preventDefault();
-    console.log(id);
-    db.collection('trades')
-      .doc(id)
-      .delete()
-      .then(function () {
-        console.log('Document successfully deleted!');
-      })
-      .catch(function (error) {
-        console.error('Error removing document: ', error);
+    db.collection('trades').doc(id).delete();
+    db.collection('messages')
+      .where('postID', '==', id)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          db.collection('messages').doc(doc.id).delete();
+        });
       });
   };
 
@@ -45,11 +44,11 @@ const Posts = ({ title, time, location, type, id, user }) => {
         <span>[USA-{location}]</span>
         {title}
       </p>
-      <div class="post-bottom-info">
+      <div className="post-bottom-info">
         <p>Submitted by {user}</p>
         <p>{timeSincePost}</p>
       </div>
-      {currentUser && currentUser.email == user ? (
+      {currentUser && currentUser.email === user ? (
         <button className="delete-post" onClick={removePost}>
           Delete Post
         </button>

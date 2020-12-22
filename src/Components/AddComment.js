@@ -28,7 +28,14 @@ const AddComment = () => {
   };
 
   useEffect(() => {
-    getCommentLength();
+    let unmounted = false;
+
+    if (!unmounted) {
+      getCommentLength();
+    }
+    return () => {
+      unmounted = true;
+    };
   }, []);
 
   const addMessages = (e) => {
