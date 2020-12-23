@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  console.log(process.env.REACT_APP_API_KEY);
 
   useEffect(() => {
     const unsubscribe = firebase
@@ -27,11 +28,11 @@ const PostList = () => {
   }, []);
 
   return loading ? (
-    <section className='postlist-holder'>
-      <span className='loader'></span>
+    <section className="postlist-holder">
+      <span className="loader"></span>
     </section>
   ) : (
-    <section className='postlist-holder'>
+    <section className="postlist-holder">
       {posts.map((post) => {
         return (
           <Link to={`/trade/${post[1]}`} key={post[1]}>
