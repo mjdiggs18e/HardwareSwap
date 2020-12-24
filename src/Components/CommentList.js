@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { useAuth } from '../Context/UserContext';
-import { db } from '../Firebase/firebase';
 
 const CommentList = () => {
   const { id } = useParams();
   const [post, setPosts] = useState([]);
+
+  // Gets all comments currently in database and inserts into setPosts state
+  // Only returns comments that have the same postID as the post
 
   useEffect(() => {
     const unsubscribe = firebase
@@ -30,6 +32,8 @@ const CommentList = () => {
   }, []);
 
   const { currentUser } = useAuth();
+
+  // Mapping through post state to get all comments for that post
 
   return post.map((comment, index) => {
     dayjs.extend(relativeTime);

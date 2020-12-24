@@ -5,6 +5,8 @@ import { useAuth } from '../Context/UserContext';
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { currentUser } = useAuth();
 
+  // If a user is logged in and tries to visit the signup or login page. They are redirected back to the home page.
+
   return (
     <Route
       {...rest}

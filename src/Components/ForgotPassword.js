@@ -9,6 +9,8 @@ const ForgotPassword = () => {
   const { resetPassword } = useAuth();
   const [message, setMessage] = useState('');
 
+  // Checks to see if values are empty. If values aren't empty, the success message appears and sends the user an email.
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -24,24 +26,26 @@ const ForgotPassword = () => {
     setLoading(false);
   }
 
+  // Reset password form. Displays error messages and a success message if the process works.
+
   return (
-    <section className="forgotpassword-section">
+    <section className='forgotpassword-section'>
       <h1>Forgot Password</h1>
-      {message && <p className="fogotpassword-sucess">{message}</p>}
-      {error && <p className="forgotpassword-error">{error}</p>}
-      <form className="forgotpassword-form" onSubmit={handleSubmit}>
+      {message && <p className='fogotpassword-sucess'>{message}</p>}
+      {error && <p className='forgotpassword-error'>{error}</p>}
+      <form className='forgotpassword-form' onSubmit={handleSubmit}>
         <label>
           Email
-          <input type="text" ref={emailRef} required />
+          <input type='text' ref={emailRef} required />
         </label>
-        <button disabled={loading} className="signup-button" type="submit">
+        <button disabled={loading} className='signup-button' type='submit'>
           Forgot Password
         </button>
       </form>
-      <Link to="/login?">
+      <Link to='/login?'>
         <p>Log In</p>
       </Link>
-      <Link to="/signup?">
+      <Link to='/signup?'>
         <p>New User? Create an account</p>
       </Link>
     </section>

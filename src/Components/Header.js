@@ -10,6 +10,8 @@ const Header = () => {
     logout();
   }
 
+  // Checks to see if there is a current user. If there is a user, the signup and log in links are placed with a logout button.
+
   return (
     <header>
       <nav>

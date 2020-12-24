@@ -13,6 +13,9 @@ const PostingSell = () => {
   const select = useRef();
   const { currentUser } = useAuth();
 
+  // On a valid submission, add the post to firestore labelled under a sell post.
+  // Toast will then display a success or failure alert at the top of the screen.
+
   const addSellPost = (e) => {
     e.preventDefault();
     dayjs.extend(relativeTime);
@@ -37,6 +40,8 @@ const PostingSell = () => {
         toast('Failed to add post.');
       });
   };
+
+  // Sell post form
 
   return (
     <section className='posting-body'>

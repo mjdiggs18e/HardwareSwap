@@ -11,6 +11,8 @@ const AddComment = () => {
   const { currentUser } = useAuth();
   const message = useRef();
 
+  //Automatically load collection and insert into setLength state
+
   useEffect(() => {
     const unsubscibe = firebase
       .firestore()
@@ -30,6 +32,8 @@ const AddComment = () => {
     };
   }, []);
 
+  // Add messages to database and clears value on submit
+
   const addMessages = (e) => {
     e.preventDefault();
     db.collection('messages')
@@ -41,6 +45,8 @@ const AddComment = () => {
       })
       .then((message.current.value = ''));
   };
+
+  // Returns nunber of messages from earlier useEffect and gets message value from input.
 
   return (
     <section className='message-section'>

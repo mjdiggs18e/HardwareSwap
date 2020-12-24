@@ -15,6 +15,9 @@ const PostingBuy = () => {
 
   const { currentUser } = useAuth();
 
+  // On a valid submission, add the post to firestore labelled under a buy post.
+  // Toast will then display a success or failure alert at the top of the screen.
+
   const addBuyPost = (e) => {
     e.preventDefault();
     dayjs.extend(relativeTime);
@@ -39,6 +42,8 @@ const PostingBuy = () => {
         toast('Failed to add post.');
       });
   };
+
+  // Buy post form.
 
   return (
     <section className='posting-body'>

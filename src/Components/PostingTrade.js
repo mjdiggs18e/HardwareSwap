@@ -18,6 +18,9 @@ const PostingTrade = () => {
     e.preventDefault();
     dayjs.extend(relativeTime);
 
+    // On a valid submission, add the post to firestore labelled under a trade post.
+    // Toast will then display a success or failure alert at the top of the screen.
+
     db.collection('trades')
       .add({
         type: 'trade',
@@ -39,6 +42,8 @@ const PostingTrade = () => {
         console.error('Error adding document');
       });
   };
+
+  // Trade post form
 
   return (
     <section className='posting-body'>

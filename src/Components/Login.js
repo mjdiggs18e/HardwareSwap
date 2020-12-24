@@ -10,6 +10,8 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  // Makes sure the forms all have values in them. If the forms have value with no errors, send the user to the homepage.
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -25,27 +27,29 @@ const Login = () => {
     setLoading(false);
   }
 
+  // Logs in a current user and checks for errors on submit
+
   return (
-    <section className="login-section">
+    <section className='login-section'>
       <h1>Log In</h1>
-      {error && <p className="login-error">{error}</p>}
-      <form className="login-form" onSubmit={handleSubmit}>
+      {error && <p className='login-error'>{error}</p>}
+      <form className='login-form' onSubmit={handleSubmit}>
         <label>
           Email
-          <input type="text" ref={emailRef} required />
+          <input type='text' ref={emailRef} required />
         </label>
         <label>
           Password
-          <input type="password" ref={passwordRef} required />
+          <input type='password' ref={passwordRef} required />
         </label>
-        <button disabled={loading} className="login-button" type="submit">
+        <button disabled={loading} className='login-button' type='submit'>
           Log In
         </button>
       </form>
-      <Link to="/forgot-password">
+      <Link to='/forgot-password'>
         <p>Forgot Password?</p>
       </Link>
-      <Link to="/signup?">
+      <Link to='/signup?'>
         <p>New User? Create an account</p>
       </Link>
     </section>

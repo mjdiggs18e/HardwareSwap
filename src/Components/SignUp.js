@@ -10,6 +10,9 @@ const SignUp = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // Checks to see if passwords match and inputs have value.
+  // If everything works, a new user is created and automatically logged in on submission.
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -28,28 +31,30 @@ const SignUp = () => {
     setLoading(false);
   }
 
+  // Signup form
+
   return (
-    <section className="signup-section">
+    <section className='signup-section'>
       <h1>Sign Up</h1>
-      {error && <p className="signup-error">{error}</p>}
-      <form className="signup-form" onSubmit={handleSubmit}>
+      {error && <p className='signup-error'>{error}</p>}
+      <form className='signup-form' onSubmit={handleSubmit}>
         <label>
           Email
-          <input type="text" ref={emailRef} required />
+          <input type='text' ref={emailRef} required />
         </label>
         <label>
           Password
-          <input type="password" ref={passwordRef} minLength="6" required />
+          <input type='password' ref={passwordRef} minLength='6' required />
         </label>
         <label>
           Password Confirmation
-          <input type="password" ref={passwordConfirmationRef} required />
+          <input type='password' ref={passwordConfirmationRef} required />
         </label>
-        <button disabled={loading} className="signup-button" type="submit">
+        <button disabled={loading} className='signup-button' type='submit'>
           Sign Up
         </button>
       </form>
-      <Link to="/login?">
+      <Link to='/login?'>
         <p>Already have an account? Log In</p>
       </Link>
     </section>

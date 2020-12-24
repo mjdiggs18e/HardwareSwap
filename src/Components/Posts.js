@@ -14,6 +14,8 @@ const Posts = ({ title, time, location, type, id, user }) => {
   const tradeTypeBuy = 'buy';
   const tradeTypeSell = 'sell';
 
+  // If the current user matches the post user. You have the ability to remove post if you no longer want to buy, sell, or trade hardware.
+
   const removePost = (e) => {
     e.preventDefault();
     db.collection('trades').doc(id).delete();
@@ -30,7 +32,7 @@ const Posts = ({ title, time, location, type, id, user }) => {
   const { currentUser } = useAuth();
 
   return (
-    <div className="trade-post">
+    <div className='trade-post'>
       <div
         className={
           type === tradeTypeBuy
@@ -40,16 +42,16 @@ const Posts = ({ title, time, location, type, id, user }) => {
             : 'trade-type trade'
         }
       ></div>
-      <p className="post-title">
+      <p className='post-title'>
         <span>[USA-{location}]</span>
         {title}
       </p>
-      <div className="post-bottom-info">
+      <div className='post-bottom-info'>
         <p>Submitted by {user}</p>
         <p>{timeSincePost}</p>
       </div>
       {currentUser && currentUser.email === user ? (
-        <button className="delete-post" onClick={removePost}>
+        <button className='delete-post' onClick={removePost}>
           Delete Post
         </button>
       ) : (

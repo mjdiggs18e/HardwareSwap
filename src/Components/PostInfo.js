@@ -13,6 +13,8 @@ const PostInfo = () => {
 
   const { id } = useParams();
 
+  // Gets all information for the route that matches the post id.
+
   useEffect(() => {
     firebase
       .firestore()
@@ -27,8 +29,11 @@ const PostInfo = () => {
       });
   }, []);
 
+  // Displays a spinner if loading and then displays all post information below.
+  // Post information includes: user, text, location, time, and preferred pickup
+
   return loading ? (
-    <span className="loader" key="spinner"></span>
+    <span className='loader' key='spinner'></span>
   ) : (
     postInformation.map((post) => {
       dayjs.extend(relativeTime);
@@ -37,16 +42,16 @@ const PostInfo = () => {
       const timeSincePost = postCreatedAt.from(currentTime);
       return (
         <section key={post.title}>
-          <div className="postinfo-holder">
-            <p className="postinfo-title">
+          <div className='postinfo-holder'>
+            <p className='postinfo-title'>
               <span>[USA-{post.location}]</span>
               {post.title}
             </p>
-            <p className="postinfo-select">{post.select}</p>
-            <p className="postinfo-submittedby">
+            <p className='postinfo-select'>{post.select}</p>
+            <p className='postinfo-submittedby'>
               Submitted {timeSincePost} by <span>{post.user}</span>
             </p>
-            <div className="postinfo-body">
+            <div className='postinfo-body'>
               <ReactMarkdown source={post.text}></ReactMarkdown>
             </div>
           </div>
