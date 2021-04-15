@@ -30,3 +30,4 @@ HardwareSwap was created using the following tools:
 - [React Markdown](https://github.com/remarkjs/react-markdown) - Convert text to markdown
 - [Firebase](https://firebase.google.com/) - Firebase is a platform developed by Google for creating mobile and web applications
 - [DayJS](https://github.com/iamkun/dayjs) -  Immutable date-time library alternative to Moment.js
+- [UUID](https://github.com/uuidjs/uuid) - Generate RFC-compliant UUIDS
