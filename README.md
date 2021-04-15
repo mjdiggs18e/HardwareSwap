@@ -10,8 +10,7 @@ Buy, sell, and trade hardware with users around the country. HardwareSwap allows
 
 ### Purpose
 
-The goal with HardwareSwap was to create my first decently sized project in React. I started off with the design in Adobe XD which is very similar to the HardwareSwap subreddit on Reddit. To handle the user post, comments, and authenication, I decided to use Firebase and Firestore to house everything. The postings for buying, selling, and trading would then be submitted to the  database and then brought back to the home page. The different colors for each post were used to differentiate each post type. After retrieving the post, I created a simple routing system using UUID to generate unique routes for each post entry.
-
+The goal with HardwareSwap was to create my first decently sized project in React. I started off with the design in Adobe XD which is very similar to the HardwareSwap subreddit on Reddit. To handle the user post, comments, and authenication, I decided to use Firebase and Firestore to house everything. The postings for buying, selling, and trading would then be submitted to the  database and then brought back to the home page. The different colors for each post were used to differentiate each post type. After retrieving the post, I created a simple routing system using UUID to generate unique routes for each post entry. Once in the post, users could comment on the item if they were interested. The creators of the post could also decided to delete their post if they changed their mind or had a successful trade.
 
 ### Features
 
